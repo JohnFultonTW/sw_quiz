@@ -4,9 +4,11 @@
   "description": "Simple quiz app integrating with Star Wars API",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/ava ./js/**/*.spec.js && npm run check",
+    "test": "npm run test-js && npm run check",
+    "test-js": "CONFIG=$(pwd)/webpack.config.js BABEL_DISABLE_CACHE=1 NODE_ENV=AVA ./node_modules/.bin/ava --require babel-register",
     "start": "./node_modules/.bin/webpack-dev-server",
-    "check": "./node_modules/.bin/eslint js/"
+    "check": "./node_modules/.bin/eslint js/",
+    "tdd": "npm run test-js -- --watch"
   },
   "repository": {
     "type": "git",
@@ -20,14 +22,31 @@
   "homepage": "https://github.com/JohnFultonTW/sw_quiz#readme",
   "devDependencies": {
     "ava": "^0.15.2",
+    "babel-cli": "^6.11.4",
     "babel-core": "^6.11.4",
     "babel-loader": "^6.2.4",
+    "babel-plugin-webpack-loaders": "^0.7.0",
     "babel-preset-es2015-webpack": "^6.4.2",
+    "babel-preset-react": "^6.11.1",
+    "css-loader": "^0.23.1",
     "eslint": "^3.1.1",
+    "eslint-plugin-react": "^5.2.2",
+    "style-loader": "^0.13.1",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
-    "material-design-lite": "^1.1.3"
+    "material-design-lite": "^1.1.3",
+    "react": "^15.2.1",
+    "react-dom": "^15.2.1"
+  },
+  "ava": {
+    "files": [
+      "./js/**/*.spec.js"
+    ],
+    "source": [
+      "./js/**/*.js",
+      "!./js/**/*.spec.js"
+    ]
   }
 }

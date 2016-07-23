@@ -1,0 +1,17 @@
+{
+  "presets": ["es2015", "react"],
+	"sourceMaps": "both",
+  "env": {
+    "AVA": {
+      "plugins": [
+        [
+          "babel-plugin-webpack-loaders",
+          {
+            "config": "${CONFIG}",
+            "verbose": false
+          }
+        ]
+      ]
+    }
+  }
+}

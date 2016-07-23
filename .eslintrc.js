@@ -3,9 +3,13 @@ module.exports = {
         "browser": true,
         "es6": true
     },
-    "extends": "eslint:recommended",
+    "plugins": [ "react" ],
+    "extends": ["eslint:recommended", "plugin:react/recommended"],
     "parserOptions": {
-        "sourceType": "module"
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
     },
     "rules": {
         "indent": [

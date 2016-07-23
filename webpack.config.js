@@ -3,18 +3,19 @@ var path = require ('path');
 
 module.exports = {
   resolve: {
-    root: [path.resolve('./js')]
+    root: [path.resolve('./js'), path.resolve('./js/app')]
   },
-  entry: "index.js",
+  entry: 'index.js',
   output: {
     filename: 'bundle.js',
-    path: './build'
+    path: path.resolve(__dirname, 'build'),
+    publicPath: '/assets/'
   },
   module: {
     loaders: [
-      {test: /\.js?$/, exclude: /node_modules/, loader: 'babel', query: {
-        cacheDirectory: true, presets: ['es2015']
-      }}
+      {test: /\.js?$/, exclude: /node_modules/, loader: 'babel'},
+      {test: /\.css?$/, loader: 'style-loader!css-loader'}
     ]
-  }
+  },
+	devtool: 'inline-source-map'
 };
