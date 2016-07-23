@@ -4,7 +4,8 @@
   "description": "Simple quiz app integrating with Star Wars API",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "npm test",
+    "start": "./node_modules/.bin/webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,17 @@
   "bugs": {
     "url": "https://github.com/JohnFultonTW/sw_quiz/issues"
   },
-  "homepage": "https://github.com/JohnFultonTW/sw_quiz#readme"
+  "homepage": "https://github.com/JohnFultonTW/sw_quiz#readme",
+  "devDependencies": {
+    "ava": "^0.15.2",
+    "babel-core": "^6.11.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015-webpack": "^6.4.2",
+    "eslint": "^3.1.1",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "dependencies": {
+    "material-design-lite": "^1.1.3"
+  }
 }
