@@ -1,1 +1,1 @@
-document.write("<h1>Web packed!</h1>");
+document.write('<h1>Web packed!</h1>');

@@ -4,8 +4,9 @@
   "description": "Simple quiz app integrating with Star Wars API",
   "main": "index.js",
   "scripts": {
-    "test": "npm test",
-    "start": "./node_modules/.bin/webpack-dev-server"
+    "test": "./node_modules/.bin/ava ./js/**/*.spec.js && npm run check",
+    "start": "./node_modules/.bin/webpack-dev-server",
+    "check": "./node_modules/.bin/eslint js/"
   },
   "repository": {
     "type": "git",
