@@ -1,0 +1,19 @@
+{
+  "name": "sw_quiz",
+  "version": "0.1.0",
+  "description": "Simple quiz app integrating with Star Wars API",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/JohnFultonTW/sw_quiz.git"
+  },
+  "author": "John Fulton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JohnFultonTW/sw_quiz/issues"
+  },
+  "homepage": "https://github.com/JohnFultonTW/sw_quiz#readme"
+}
