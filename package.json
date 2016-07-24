@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run test-js && npm run check",
-    "test-js": "CONFIG=$(pwd)/webpack.config.js BABEL_DISABLE_CACHE=1 NODE_ENV=AVA ./node_modules/.bin/ava --require babel-register",
+    "test-js": "./node_modules/.bin/ava",
     "start": "./node_modules/.bin/webpack-dev-server",
     "check": "./node_modules/.bin/eslint js/",
     "tdd": "npm run test-js -- --watch"
@@ -29,8 +29,11 @@
     "babel-preset-es2015-webpack": "^6.4.2",
     "babel-preset-react": "^6.11.1",
     "css-loader": "^0.23.1",
+    "enzyme": "^2.4.1",
     "eslint": "^3.1.1",
     "eslint-plugin-react": "^5.2.2",
+    "react-addons-test-utils": "^15.2.1",
+    "react-dom": "^15.2.1",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
@@ -42,11 +45,15 @@
   },
   "ava": {
     "files": [
-      "./js/**/*.spec.js"
+      "./app/**/*.spec.js"
     ],
     "source": [
-      "./js/**/*.js",
-      "!./js/**/*.spec.js"
-    ]
+      "./app/**/*.js",
+      "!./app/**/*.spec.js"
+    ],
+    "require": [
+      "babel-register"
+    ],
+    "babel": "inherit"
   }
 }

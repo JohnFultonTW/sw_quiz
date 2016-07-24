@@ -3,7 +3,7 @@ var path = require ('path');
 
 module.exports = {
   resolve: {
-    root: [path.resolve('./js'), path.resolve('./js/app')]
+    root: [path.resolve('./app'), path.resolve('./app/js')]
   },
   entry: 'index.js',
   output: {

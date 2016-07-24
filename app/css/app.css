@@ -1,0 +1,9 @@
+
+.quiz-title-row {
+  min-height: 200px;
+}
+
+.quiz-title {
+  width: 100%;
+  text-align: center;
+}
