@@ -32,13 +32,16 @@
     "enzyme": "^2.4.1",
     "eslint": "^3.1.1",
     "eslint-plugin-react": "^5.2.2",
+    "fetch-mock": "^5.0.3",
     "react-addons-test-utils": "^15.2.1",
     "react-dom": "^15.2.1",
+    "sinon": "^1.17.4",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
+    "lodash": "^4.13.1",
     "material-design-lite": "^1.1.3",
     "react": "^15.2.1",
     "react-dom": "^15.2.1"
