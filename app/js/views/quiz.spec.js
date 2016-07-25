@@ -12,11 +12,10 @@ let component;
 let askComponent;
 let answerComponent;
 let resultComponent;
-let wasCorrect;
 const answer = '42';
 
 const question = {
-    entityType: 'people',
+  entityType: 'people',
 };
 
 const outcome = {correct: true};
@@ -26,7 +25,7 @@ let update = () => {
   askComponent = component.childAt(0);
   answerComponent = component.childAt(1);
   resultComponent = component.childAt(2);
-}
+};
 
 test.before(() => {
   let textStub = sinon.stub(QuestionUtils, 'questionText');
