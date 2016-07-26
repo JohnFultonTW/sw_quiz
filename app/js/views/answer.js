@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 class Answer extends React.Component {
   constructor() {
@@ -27,5 +27,9 @@ class Answer extends React.Component {
     );
   }
 }
+
+Answer.propTypes = {
+  onAnswer: PropTypes.func.isRequired
+};
 
 export default Answer;

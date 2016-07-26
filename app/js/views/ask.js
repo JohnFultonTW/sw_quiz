@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 class Ask extends React.Component {
   constructor() {
@@ -6,8 +6,12 @@ class Ask extends React.Component {
   }
 
   render() {
-    return (<div>ask</div>);
+    return (<div>{this.props.question}</div>);
   }
 }
+
+Ask.propTypes = {
+  question: PropTypes.string.isRequired
+};
 
 export default Ask;

@@ -39,7 +39,7 @@ class Quiz extends React.Component {
       <div>
         <Ask question={this.getQuestion()} />
         <Answer onAnswer={this.handleAnswer.bind(this)}/>
-        <Result show={this.state.answered} correct={this.state.correct}/>
+        <Result show={this.state.answered} correct={this.state.correct || false}/>
       </div>
     );
   }
