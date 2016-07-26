@@ -12,10 +12,6 @@ const ENTITY_COUNT = {
 };
 
 let QuestionUtils = {
-  questionText: () => {
-    return 'yay';
-  },
-
   getRandomQuestion: () => {
     let question = _.sample(questions);
     let entityId = random.integer(1, ENTITY_COUNT[question.entityType]);
@@ -28,8 +24,6 @@ let QuestionUtils = {
       question.entity = entity;
       return question; 
     });
-  },
-  determineOutcome: () => {
   },
 };
 

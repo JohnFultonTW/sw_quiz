@@ -6,7 +6,11 @@ class Answer extends React.Component {
   }
 
   render() {
-    return (<div>answer</div>);
+    return (
+      <div>
+        <input className="mdl-textfield__input" type="text" id="sample1" />
+      </div>
+    );
   }
 }
 

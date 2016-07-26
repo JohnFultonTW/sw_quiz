@@ -12,13 +12,14 @@ let component;
 let askComponent;
 let answerComponent;
 let resultComponent;
-const answer = '42';
+let questionPromise;
 
 const question = {
   entityType: 'people',
+  text: entity => 'text of the question for ' + entity.name,
+  answer: entity => entity.name,
+  entity: { name: 'jeff' }
 };
-
-const outcome = {correct: true};
 
 let update = () => {
   component.update();
@@ -28,19 +29,13 @@ let update = () => {
 };
 
 test.before(() => {
-  let textStub = sinon.stub(QuestionUtils, 'questionText');
-  textStub.returns('question was not passed in');
-  textStub.withArgs(question).returns('the question text');
-
-  sinon.stub(QuestionUtils, 'getRandomQuestion').returns(question);
-
-  let outcomeStub = sinon.stub(QuestionUtils, 'determineOutcome');
-  outcomeStub.returns('question and/or answere not passed in');
-  outcomeStub.withArgs(question, answer).returns(outcome);
+  questionPromise = new Promise( resolve => resolve(question));
+  sinon.stub(QuestionUtils, 'getRandomQuestion').returns(questionPromise);
 });
 
-test.beforeEach(() => {
+test.beforeEach(async () => {
   component = shallow(<Quiz />);
+  await questionPromise;
   update();
 });
 
@@ -56,8 +51,9 @@ test('renders result component at the bottom', t => {
   t.is(resultComponent.type(), Result);
 });
 
-test('retrieves question and passes question text into ask component', t => {
-  t.is(askComponent.prop('question'), QuestionUtils.questionText(question));
+test('retrieves question and passes question text into ask component', async t => {
+  update();
+  t.is(askComponent.prop('question'), question.text(question.entity));
 });
 
 test('hides the result component initially', t => {
@@ -70,8 +66,14 @@ test('shows result component after answer is provided', t => {
   t.is(resultComponent.prop('show'), true);
 });
 
-test('passes the outcome down to the result component', t => {
-  answerComponent.prop('onAnswer')(answer);
+test('if answer is correct, passes true to results correct property', t => {
+  answerComponent.prop('onAnswer')('jeff');
   update();
-  t.is(resultComponent.prop('outcome'), outcome);
+  t.is(resultComponent.prop('correct'), true);
+});
+
+test('if answer is incorrect, passes false to results correct property', t => {
+  answerComponent.prop('onAnswer')('notjeff');
+  update();
+  t.is(resultComponent.prop('correct'), false);
 });
