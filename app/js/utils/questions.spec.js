@@ -11,7 +11,7 @@ test('persons hair colour', t => {
 test('films release year', t => {
   let question = questions[1];
   t.is(question.entityType, 'films');
-  t.is(question.text({title: 'A New Hope'}), 'What was the release date of A New Hope?');
+  t.is(question.text({title: 'A New Hope'}), 'What year was A New Hope released?');
   t.is(question.answer({release_date: '1977-05-25'}), '1977');
 });
 

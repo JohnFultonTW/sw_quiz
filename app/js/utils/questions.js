@@ -5,7 +5,7 @@ let questions = [
     answer: entity => entity.hair_color
   }, {
     entityType: 'films',
-    text: entity => 'What was the release date of ' + entity.title + '?',
+    text: entity => 'What year was ' + entity.title + ' released?',
     answer: entity => entity.release_date.substring(0,4)
   }, {
     entityType: 'starships',
