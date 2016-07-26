@@ -20,3 +20,21 @@
 .quiz-card {
   margin-top: 20px;
 }
+
+.icon-success {
+  color: green;
+}
+
+.icon-fail {
+  color: red;
+}
+
+.result-icon-container .result-icon {
+  font-size: 38px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.result-icon-container {
+  text-align: center;
+}

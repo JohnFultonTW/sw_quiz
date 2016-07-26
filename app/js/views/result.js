@@ -8,8 +8,8 @@ class Result extends React.Component {
   render() {
     return (
       <div className={this.props.show ? '' : 'hidden'}>
-        <div className="app__icon">
-          <i className="material-icons">{this.props.correct ? 'done' : 'close'}</i>
+        <div className="result-icon-container">
+          <i className={'material-icons result-icon ' + (this.props.correct ? 'icon-success' : 'icon-fail')}>{this.props.correct ? 'done' : 'close'}</i>
         </div>
       </div>
     );

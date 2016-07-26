@@ -15,7 +15,7 @@ test('does not set root div to hidden if show property is true', t => {
 
 test('when answer is correct, show tick icon', t => {
   let component = shallow(<Result show={true} correct={true} />);
-  let iconDiv = component.findWhere(node => node.type() == 'div' && node.hasClass('app__icon'));
+  let iconDiv = component.findWhere(node => node.type() == 'div' && node.hasClass('result-icon-container'));
   t.is(iconDiv.children().type(), 'i');
   t.true(iconDiv.children().hasClass('material-icons'));
   t.is(iconDiv.children().text(), 'done');
@@ -24,7 +24,7 @@ test('when answer is correct, show tick icon', t => {
 
 test('when answer is incorrect, show cross icon', t => {
   let component = shallow(<Result show={true} correct={false} />);
-  let iconDiv = component.findWhere(node => node.type() == 'div' && node.hasClass('app__icon'));
+  let iconDiv = component.findWhere(node => node.type() == 'div' && node.hasClass('result-icon-container'));
   t.is(iconDiv.children().type(), 'i');
   t.true(iconDiv.children().hasClass('material-icons'));
   t.is(iconDiv.children().text(), 'close');

@@ -29,6 +29,10 @@ test('renders button to allow user to confirm answer', t => {
   t.is(component.find('button').length, 1);
 });
 
+test('button has a useful label', t => {
+  t.is(component.find('button').text(), 'Answer');
+});
+
 test('triggers \'onAnswer\' with users answer when button clicked', t => {
   input.prop('onChange')({ target: { value: 'myanswer' } });
   button.prop('onClick')();
