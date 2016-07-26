@@ -37,7 +37,7 @@ test.before(() => {
 });
 
 test('returns a random question from questions list, populated with film entity from api',  async t => {
-  randomStub.withArgs(1, 7).returns(3);
+  randomStub.withArgs(1, 7).returns(() => 3);
   fetchMock.mock('http://swapi.co/api/films/3', filmEntity);
   sampleStub.withArgs(questions).returns(filmQuestion);
   let question = await QuestionUtils.getRandomQuestion();
@@ -46,7 +46,7 @@ test('returns a random question from questions list, populated with film entity 
 });
 
 test('returns a random question from questions list, populated with character entity from api',  async t => {
-  randomStub.withArgs(1, 87).returns(33);
+  randomStub.withArgs(1, 87).returns(() => 33);
   fetchMock.mock('http://swapi.co/api/people/33', peopleEntity);
   sampleStub.withArgs(questions).returns(peopleQuestion);
   let question = await QuestionUtils.getRandomQuestion();

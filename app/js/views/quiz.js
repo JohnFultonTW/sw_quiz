@@ -37,9 +37,16 @@ class Quiz extends React.Component {
   render() {
     return (
       <div>
-        <Ask question={this.getQuestion()} />
-        <Answer onAnswer={this.handleAnswer.bind(this)}/>
-        <Result show={this.state.answered} correct={this.state.correct || false}/>
+        <div className="card-row">
+          <div className="card-padding"></div>
+          <div className="mdl-card mdl-shadow--2dp quiz-card">
+            <div className="mdl-card__title"><h2 className="mdl-card__title-text">Question</h2></div>
+            <div className="mdl-card__supporting-text"><Ask question={this.getQuestion()} /> </div>
+            <div className="mdl-card__actions mdl-card--border" ><Answer onAnswer={this.handleAnswer.bind(this)}/></div>
+            <Result show={this.state.answered} correct={this.state.correct || false}/>
+          </div>
+          <div className="card-padding"></div>
+        </div>
       </div>
     );
   }

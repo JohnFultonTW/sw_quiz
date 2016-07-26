@@ -7,7 +7,7 @@ class App extends React.Component {
     super();
   }
   render() {
-    return (<div className="mdl-base"><Header /><Quiz /></div>);
+    return (<div className="mdl-base mdl-layout__container"><Header /><Quiz /></div>);
   }
 }
 

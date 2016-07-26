@@ -13,9 +13,9 @@ const ENTITY_COUNT = {
 
 let QuestionUtils = {
   getRandomQuestion: () => {
+    var engine = random.engines.mt19937().autoSeed();
     let question = _.sample(questions);
-    let entityId = random.integer(1, ENTITY_COUNT[question.entityType]);
-
+    let entityId = random.integer(1, ENTITY_COUNT[question.entityType])(engine);
     return fetch('http://swapi.co/api/' + question.entityType +'/' + entityId).then(response => {
       return response.json().then(json => {
         return json;

@@ -23,9 +23,9 @@ const question = {
 
 let update = () => {
   component.update();
-  askComponent = component.childAt(0);
-  answerComponent = component.childAt(1);
-  resultComponent = component.childAt(2);
+  askComponent = component.find(Ask);
+  answerComponent = component.find(Answer);
+  resultComponent = component.find(Result);
 };
 
 test.before(() => {
