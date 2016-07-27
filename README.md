@@ -14,6 +14,10 @@ This project makes use of the following technologies
 ## Testing
 Run 
 `npm test` - Run tests and style check once
+
 `npm run check` - Run style check only
+
 `npm run tdd` - Run tests in watch mode
+
 `npm start` = Start local server on port 8080
+
