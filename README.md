@@ -19,5 +19,5 @@ Run
 
 `npm run tdd` - Run tests in watch mode
 
-`npm start` = Start local server on port 8080
+`npm start` - Start local server on port 8080
 
