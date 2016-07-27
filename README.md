@@ -12,7 +12,6 @@ This project makes use of the following technologies
 * [ESLint](http://eslint.org/) for linting
 
 ## Testing
-Run 
 `npm test` - Run tests and style check once
 
 `npm run check` - Run style check only
