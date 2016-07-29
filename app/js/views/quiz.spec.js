@@ -14,6 +14,7 @@ let askComponent;
 let answerComponent;
 let resultComponent;
 let questionPromise;
+let clock;
 
 const question = {
   entityType: 'people',
@@ -29,12 +30,22 @@ let update = () => {
   resultComponent = component.find(Result);
 };
 
+let willReturnQuestion = question => {
+  questionPromise = new Promise( resolve => resolve(question));
+  getQuestionStub.returns(questionPromise);
+}
+
+let answersWith = answer => {
+  answerComponent.prop('onAnswer')(answer);
+  update();
+};
+
 let getQuestionStub;
 
 test.before(() => {
-  questionPromise = new Promise( resolve => resolve(question));
+  clock = sinon.useFakeTimers();
   getQuestionStub = sinon.stub(QuestionUtils, 'getRandomQuestion');
-  getQuestionStub.returns(questionPromise);
+  willReturnQuestion(question);
 });
 
 test.beforeEach(async () => {
@@ -55,7 +66,7 @@ test('renders result component at the bottom', t => {
   t.is(resultComponent.type(), Result);
 });
 
-test('retrieves question and passes question text into ask component', async t => {
+test('retrieves question and passes question text into ask component', t => {
   update();
   t.is(askComponent.prop('question'), question.text(question.entity));
 });
@@ -65,32 +76,29 @@ test('hides the result component initially', t => {
 });
 
 test('shows result component after answer is provided', t => {
-  answerComponent.prop('onAnswer')();
-  update();
+   answersWith('anything');
   t.is(resultComponent.prop('show'), true);
 });
 
 test('if answer is correct, passes true to results correct property', t => {
-  answerComponent.prop('onAnswer')('jeff');
-  update();
+   answersWith('jeff');
   t.is(resultComponent.prop('correct'), true);
 });
 
 test('if answer is incorrect, passes false to results correct property', t => {
-  answerComponent.prop('onAnswer')('notjeff');
-  update();
+   answersWith('notJeff');
   t.is(resultComponent.prop('correct'), false);
 });
 
 test('after user answers, wait 5 seconds and generate a new question', async t => {
   let newQuestion = _.assign(_.cloneDeep(question), {entity: {name: 'Jim'}});
-  questionPromise = new Promise( resolve => resolve(newQuestion));
-  let clock = sinon.useFakeTimers();
-  getQuestionStub.returns(questionPromise);
-  answerComponent.prop('onAnswer')('someanswer');
+  willReturnQuestion(newQuestion);
+
+  answersWith('someAnswer');
   clock.tick(5001);
   await questionPromise;
   update();
+
   t.is(askComponent.prop('question'), newQuestion.text(newQuestion.entity));
 });
 
