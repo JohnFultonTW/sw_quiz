@@ -12,6 +12,11 @@ This project makes use of the following technologies
 * [ESLint](http://eslint.org/) for linting
 
 ## Testing
+
+Make sure you have installed [NodeJS](https://nodejs.org/en/).
+Then it's as easy as:
+
+
 `npm test` - Run tests and style check once
 
 `npm run check` - Run style check only
