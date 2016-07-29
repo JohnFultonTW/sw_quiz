@@ -10,9 +10,7 @@ class Quiz extends React.Component {
   }
 
   componentWillMount() {
-    QuestionUtils.getRandomQuestion().then( question => {
-      this.setState({ question: question });
-    });
+    this.getNewQuestion();
     this.setState({
       answered: false
     });
