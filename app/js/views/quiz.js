@@ -24,7 +24,14 @@ class Quiz extends React.Component {
       answered: true,
       correct
     });
+    setTimeout(this.getNewQuestion.bind(this), 100);
   }
+
+  getNewQuestion() {
+    QuestionUtils.getRandomQuestion().then( question => {
+      this.setState({ question: question });
+    });
+ }
 
   getQuestion() {
     if (this.state.question) {
