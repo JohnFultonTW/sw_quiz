@@ -7,6 +7,7 @@ import Result from './result';
 import QuestionUtils from '../utils/questionUtils';
 import sinon from 'sinon';
 import { shallow } from 'enzyme';
+import _ from 'lodash';
 
 let component;
 let askComponent;
@@ -28,9 +29,12 @@ let update = () => {
   resultComponent = component.find(Result);
 };
 
+let getQuestionStub;
+
 test.before(() => {
   questionPromise = new Promise( resolve => resolve(question));
-  sinon.stub(QuestionUtils, 'getRandomQuestion').returns(questionPromise);
+  getQuestionStub = sinon.stub(QuestionUtils, 'getRandomQuestion');
+  getQuestionStub.returns(questionPromise);
 });
 
 test.beforeEach(async () => {
@@ -77,3 +81,16 @@ test('if answer is incorrect, passes false to results correct property', t => {
   update();
   t.is(resultComponent.prop('correct'), false);
 });
+
+test('after user answers, wait 5 seconds and generate a new question', async t => {
+  let newQuestion = _.assign(_.cloneDeep(question), {entity: {name: 'Jim'}});
+  questionPromise = new Promise( resolve => resolve(newQuestion));
+  let clock = sinon.useFakeTimers();
+  getQuestionStub.returns(questionPromise);
+  answerComponent.prop('onAnswer')('someanswer');
+  clock.tick(5001);
+  await questionPromise;
+  update();
+  t.is(askComponent.prop('question'), newQuestion.text(newQuestion.entity));
+});
+
