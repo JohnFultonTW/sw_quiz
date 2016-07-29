@@ -38,3 +38,7 @@
 .result-icon-container {
   text-align: center;
 }
+
+.pull-right {
+  float: right;
+}
