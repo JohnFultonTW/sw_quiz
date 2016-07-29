@@ -33,7 +33,7 @@ let update = () => {
 let willReturnQuestion = question => {
   questionPromise = new Promise( resolve => resolve(question));
   getQuestionStub.returns(questionPromise);
-}
+};
 
 let answersWith = answer => {
   answerComponent.prop('onAnswer')(answer);
@@ -76,17 +76,17 @@ test('hides the result component initially', t => {
 });
 
 test('shows result component after answer is provided', t => {
-   answersWith('anything');
+  answersWith('anything');
   t.is(resultComponent.prop('show'), true);
 });
 
 test('if answer is correct, passes true to results correct property', t => {
-   answersWith('jeff');
+  answersWith('jeff');
   t.is(resultComponent.prop('correct'), true);
 });
 
 test('if answer is incorrect, passes false to results correct property', t => {
-   answersWith('notJeff');
+  answersWith('notJeff');
   t.is(resultComponent.prop('correct'), false);
 });
 
@@ -94,8 +94,7 @@ let waitFor = async time => {
   clock.tick(time);
   await questionPromise;
   update();
-
-}
+};
 
 test('after user answers, wait 5 seconds and generate a new question', async t => {
   let newQuestion = _.assign(_.cloneDeep(question), {entity: {name: 'Jim'}});

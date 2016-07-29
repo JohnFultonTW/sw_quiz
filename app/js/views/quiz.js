@@ -29,7 +29,7 @@ class Quiz extends React.Component {
     this.setState({
       answered: false
     });
- }
+  }
 
   getQuestion() {
     if (this.state.question) {
