@@ -19,7 +19,7 @@ class Quiz extends React.Component {
       answered: true,
       correct
     });
-    setTimeout(this.getNewQuestion.bind(this), 100);
+    setTimeout(this.getNewQuestion.bind(this), 5000);
   }
 
   getNewQuestion() {
