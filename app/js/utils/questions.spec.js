@@ -21,3 +21,10 @@ test('how many films was a particular ship featured in', t => {
   t.is(question.text({name: 'Slave 1'}), 'How many films was the ship \'Slave 1\' featured in?');
   t.is(question.answer({films: [1,2]}), '2');
 });
+
+test('what species is a particular character', t => {
+  let question = questions[3];
+  t.is(question.entityType, 'people');
+  t.is(question.text({name: 'Luke Skywalker'}), 'What species is Luke Skywalker?');
+  t.is(question.text({species: ["http://swapi.co/api/species/1/"]}), 'human');
+});
