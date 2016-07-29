@@ -25,7 +25,7 @@ class Answer extends React.Component {
 					<input className="mdl-textfield__input" type="text" id="sample1" value={this.state.answer} onChange={this.handleChange.bind(this)} />
 					<label className="mdl-textfield__label" htmlFor="sample1">Answer...</label>
 				</div>
-        <button className="mdl-button mdl-js-button mdl-button--raised" onClick={this.handleClick.bind(this)}>Answer</button>
+        <button className="mdl-button mdl-js-button mdl-button--raised pull-right mdl-button--colored" onClick={this.handleClick.bind(this)}>Answer</button>
     </div>
       );
   }
