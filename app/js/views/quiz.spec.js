@@ -90,19 +90,22 @@ test('if answer is incorrect, passes false to results correct property', t => {
   t.is(resultComponent.prop('correct'), false);
 });
 
-test.only('after user answers, wait 5 seconds and generate a new question', async t => {
+let waitFor = async time => {
+  clock.tick(time);
+  await questionPromise;
+  update();
+
+}
+
+test('after user answers, wait 5 seconds and generate a new question', async t => {
   let newQuestion = _.assign(_.cloneDeep(question), {entity: {name: 'Jim'}});
   willReturnQuestion(newQuestion);
 
   answersWith('someAnswer');
-  clock.tick(4900);
-  await questionPromise;
-  update();
+  await waitFor(4900);
   t.is(resultComponent.prop('show'), true);
-  clock.tick(5001);
-  await questionPromise;
-  update();
-
+  await waitFor(200);
+  
   t.is(askComponent.prop('question'), newQuestion.text(newQuestion.entity));
   t.is(resultComponent.prop('show'), false);
 });
