@@ -100,5 +100,5 @@ test('after user answers, wait 5 seconds and generate a new question', async t =
   update();
 
   t.is(askComponent.prop('question'), newQuestion.text(newQuestion.entity));
+  t.is(resultComponent.prop('show'), false);
 });
-
